@@ -5,17 +5,31 @@ using UnityEngine;
 public class GenerateGrid : MonoBehaviour
 {
     public int gridSize;
+    private int totalTiles;
     private int regionWidth, regionHeight;
     public Tile tilePrefab;
     public Transform cam;
-    private Tile[,] tiles;
-
+    public Tile[,] tiles;
+    
     public GameObject baseRegion;
     private GameObject[] duplicateRegions;
 
+    public bool[] isTileOffset;
+    public GameObject[] allTiles;
+    public GameObject gridManager;
+
+    public Material tileMaterial, tileMaterialOffset, tileMaterialRegion, tileMaterialRegionOffset;
+    public Renderer tileRenderer;
+
     void Start()
-    {     
-        GenerateGridInGame();        
+    {
+        totalTiles = gridSize * gridSize;
+        allTiles = new GameObject[totalTiles];
+        isTileOffset = new bool[totalTiles];
+
+        GenerateGridInGame();
+        GetAllTiles();
+        //TileIsOffset();
     }
 
     void GenerateGridInGame()
@@ -30,11 +44,30 @@ public class GenerateGrid : MonoBehaviour
                 {
                     var spawnedTile = Instantiate(tilePrefab, new Vector3((x * 10), 0, (z * 10)), Quaternion.identity);
                     spawnedTile.name = $"Tile {x} {z}";
-                    var isOffset = (x + z) % 2 == 1;
+
+                    bool isOffset = (x + z) % 2 == 1;
+
                     spawnedTile.Init(isOffset);
+
                     spawnedTile.transform.parent = baseRegion.transform;
                     tiles[x, z] = spawnedTile;
-                    cam.transform.position = new Vector3(((float)gridSize / 2 - 0.5f) * 10, (float)gridSize * 10, ((float)gridSize / 2 - 0.5f) * 10);
+
+                    if (gridSize == 4)
+                    {
+                        cam.transform.position = new Vector3(-2.5f, (float)gridSize * 10, ((float)gridSize / 2 - 0.5f) * 10);
+                    }
+                    else if (gridSize == 6)
+                    {
+                        cam.transform.position = new Vector3(-1f, (float)gridSize * 10, ((float)gridSize / 2 - 0.5f) * 10);
+                    }
+                    else if (gridSize == 9)
+                    {
+                        cam.transform.position = new Vector3(2f, (float)gridSize * 10, ((float)gridSize / 2 - 0.5f) * 10);
+                    }
+                    else
+                    {
+                        cam.transform.position = new Vector3(((float)gridSize / 2 - 0.5f), (float)gridSize * 10, ((float)gridSize / 2 - 0.5f) * 10);
+                    }                  
                 }
             }
             duplicateRegions = new GameObject[gridSize];
@@ -104,4 +137,38 @@ public class GenerateGrid : MonoBehaviour
             }                             
         }
     }
+    void GetAllTiles()
+    {       
+        allTiles = GameObject.FindGameObjectsWithTag("Tile");
+
+        for (int i = 0; i < totalTiles; i++)
+        {
+            Debug.Log(allTiles[i]);
+        }
+    }
+
+    //public void TileIsOffset()
+    //{
+    //    allTiles = GameObject.FindGameObjectsWithTag("Tile");
+    //    bool isOffset, isOddRegion;
+
+    //    for (int i = 0; i < totalTiles; i++)
+    //    {
+    //        isOffset = ((allTiles[i].transform.position.x / 10) + (allTiles[i].transform.position.z / 10)) % 2 == 1;
+    //        isOddRegion = (i % 2 == 1);
+    //        SetTileMaterials(isOffset, isOddRegion);
+    //    }
+    //}
+
+    //public void SetTileMaterials(bool isOffset, bool isOddRegion)
+    //{
+    //    if (isOddRegion) //If odd region, set the tile material to the dark material
+    //    {
+    //        tileRenderer.material = isOffset ? tileMaterialRegionOffset : tileMaterialRegion;
+    //    }
+    //    else //Otherwise, set the tile material to the light material
+    //    {
+    //        tileRenderer.material = isOffset ? tileMaterialOffset : tileMaterial;
+    //    }
+    //}
 }
