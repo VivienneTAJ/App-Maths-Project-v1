@@ -20,6 +20,11 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && optionsMenuUI.activeInHierarchy)
+        {
+            optionsMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(true);
+        }
     }
     void Pause()
     {
