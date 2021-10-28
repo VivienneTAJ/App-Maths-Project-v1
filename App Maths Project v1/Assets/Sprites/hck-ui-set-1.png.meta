@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -7157691273079346456
-    second: hck-ui-set-1_0
+    second: BG
   - first:
       213: 16164874713623235
     second: Slot
@@ -190,6 +190,27 @@ TextureImporter:
       bones: []
       spriteID: 6c33d5b6a11940a60800000000000000
       internalID: 7639390410583651270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea2130d5b5caac90800000000000000
+      internalID: -7157691273079346456
       vertices: []
       indices: 
       edges: []

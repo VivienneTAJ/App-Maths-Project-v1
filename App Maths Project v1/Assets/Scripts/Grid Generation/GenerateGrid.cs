@@ -1,38 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class GenerateGrid : MonoBehaviour
 {
     public int gridSize;
-    private int totalTiles;
-    private int regionWidth, regionHeight;
+    public int regionWidth, regionHeight;
     public Tile tilePrefab;
-    public Transform cam;
-    public Tile[,] tiles;
-    
+    public Transform cam;   
+    public Tile[,] tiles;     
     public GameObject baseRegion;
     private GameObject[] duplicateRegions;
-
-    public bool[] isTileOffset;
-    public GameObject[] allTiles;
-    public GameObject gridManager;
-
+    public List<GameObject> allTiles;
     public Material tileMaterial, tileMaterialOffset, tileMaterialRegion, tileMaterialRegionOffset;
-    public Renderer tileRenderer;
+    public bool colIsOffset, tileIsOffset;
 
     void Start()
     {
-        totalTiles = gridSize * gridSize;
-        allTiles = new GameObject[totalTiles];
-        isTileOffset = new bool[totalTiles];
-
-        GenerateGridInGame();
-        GetAllTiles();
-        //TileIsOffset();
+        GenerateBaseRegion();
+        DuplicateRegion();
+        TileIsOffset();
     }
 
-    void GenerateGridInGame()
+    void GenerateBaseRegion()
     {
         if (!IsPrime(gridSize) && gridSize > 1)
         {
@@ -43,15 +35,9 @@ public class GenerateGrid : MonoBehaviour
                 for (int z = 0; z < regionHeight; z++)
                 {
                     var spawnedTile = Instantiate(tilePrefab, new Vector3((x * 10), 0, (z * 10)), Quaternion.identity);
-                    spawnedTile.name = $"Tile {x} {z}";
-
-                    bool isOffset = (x + z) % 2 == 1;
-
-                    spawnedTile.Init(isOffset);
-
+                    spawnedTile.name = $"{x * 10} {z * 10}";
                     spawnedTile.transform.parent = baseRegion.transform;
                     tiles[x, z] = spawnedTile;
-
                     if (gridSize == 4)
                     {
                         cam.transform.position = new Vector3(-2.5f, (float)gridSize * 10, ((float)gridSize / 2 - 0.5f) * 10);
@@ -70,8 +56,6 @@ public class GenerateGrid : MonoBehaviour
                     }                  
                 }
             }
-            duplicateRegions = new GameObject[gridSize];
-            DuplicateRegion();
         }
         else
         {
@@ -102,20 +86,18 @@ public class GenerateGrid : MonoBehaviour
             }
         }
     }
-
     void DuplicateRegion()
     {
         int regionToFollow;
-        int tilesInRow = 1;
-        int tilesInCol = 1;
-
+        int tilesInRow = 1, tilesInCol = 1;
+        duplicateRegions = new GameObject[gridSize];
         duplicateRegions[0] = baseRegion;
         for (int i = 1; i < gridSize; i++)
         {            
             GameObject duplicateRegion = GameObject.Instantiate(baseRegion);
+            duplicateRegion.name = $"Region {i + 1}";
             duplicateRegions[i] = duplicateRegion;
             duplicateRegion.transform.parent = transform;
-
             if (regionWidth < regionHeight)
             {
                 regionToFollow = regionWidth;
@@ -134,41 +116,47 @@ public class GenerateGrid : MonoBehaviour
                 duplicateRegions[i].transform.position = new Vector3(duplicateRegions[0].transform.position.x, 0, duplicateRegions[i - 1].transform.position.z + (regionHeight * 10));
                 tilesInCol++;
                 tilesInRow = 1;
-            }                             
+            }
+            Transform parentTransform = duplicateRegions[i].transform;
+            foreach (Transform child in parentTransform)
+            {
+                float x = child.position.x, z = child.position.z;
+                child.name = $"{x} {z}";
+            }
         }
     }
-    void GetAllTiles()
-    {       
-        allTiles = GameObject.FindGameObjectsWithTag("Tile");
-
-        for (int i = 0; i < totalTiles; i++)
+    public void TileIsOffset()
+    {
+        allTiles = GameObject.FindGameObjectsWithTag("Tile").OrderBy((GameObject i) => i.transform.position.x).ToList();
+        foreach (GameObject child in allTiles)
         {
-            Debug.Log(allTiles[i]);
+            float x = child.transform.position.x, z = child.transform.position.z;
+            if ((x / 10) % 2 == 1)
+            {
+                colIsOffset = true;
+                tileIsOffset = ((z / 10) % 2 == 1);
+            }
+            else
+            {
+                colIsOffset = false;
+                tileIsOffset = ((z / 10) % 2 == 0);
+            }
+            SetTileMaterials(child, tileIsOffset);
         }
     }
 
-    //public void TileIsOffset()
-    //{
-    //    allTiles = GameObject.FindGameObjectsWithTag("Tile");
-    //    bool isOffset, isOddRegion;
+    public void SetTileMaterials(GameObject currentTile, bool isOffset/*, bool isOddRegion*/)
+    {
+        currentTile.GetComponent<MeshRenderer>().material = isOffset ? tileMaterialOffset : tileMaterial;
 
-    //    for (int i = 0; i < totalTiles; i++)
-    //    {
-    //        isOffset = ((allTiles[i].transform.position.x / 10) + (allTiles[i].transform.position.z / 10)) % 2 == 1;
-    //        isOddRegion = (i % 2 == 1);
-    //        SetTileMaterials(isOffset, isOddRegion);
-    //    }
-    //}
+        //if (isOddRegion) //If odd region, set the tile material to the dark material
+        //{
+        //    currentTile.GetComponent<MeshRenderer>().material = isOffset ? tileMaterialRegionOffset : tileMaterialRegion;
+        //}
+        //else //Otherwise, set the tile material to the light material
+        //{
+        //    currentTile.GetComponent<MeshRenderer>().material = isOffset ? tileMaterialOffset : tileMaterial;
+        //}
+    }
 
-    //public void SetTileMaterials(bool isOffset, bool isOddRegion)
-    //{
-    //    if (isOddRegion) //If odd region, set the tile material to the dark material
-    //    {
-    //        tileRenderer.material = isOffset ? tileMaterialRegionOffset : tileMaterialRegion;
-    //    }
-    //    else //Otherwise, set the tile material to the light material
-    //    {
-    //        tileRenderer.material = isOffset ? tileMaterialOffset : tileMaterial;
-    //    }
-    //}
 }
