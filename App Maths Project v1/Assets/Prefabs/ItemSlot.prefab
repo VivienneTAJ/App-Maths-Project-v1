@@ -147,8 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b95562d75858544894fd5481683e8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateGrid: {fileID: 0}
+  generateGrid: {fileID: 5291175731462790611, guid: e2e1afde346f2f1479807149402dbc2b,
+    type: 3}
   numberText: {fileID: 3773019748489306091}
+  curNoOfTiles: 0
 --- !u!225 &3773019748489306093
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -250,6 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84287c2766ad9194290c2cd830d61eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfTiles: {fileID: 3773019748489306090}
+  item: {fileID: 3773019749967284368}
 --- !u!1 &3773019749967284368
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,4 +355,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862d1de70456ee647a94e38dbd2ac2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 2389918165250037184, guid: 7506a642de365ca4b85c5b59946f910a, type: 3}
+  gridSlot: {fileID: 3773019749880960924}

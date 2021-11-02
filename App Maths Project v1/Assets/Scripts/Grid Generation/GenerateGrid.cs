@@ -16,12 +16,27 @@ public class GenerateGrid : MonoBehaviour
     public List<GameObject> allTiles;
     public Material tileMaterial, tileMaterialOffset, tileMaterialRegion, tileMaterialRegionOffset;
     public bool colIsOffset, tileIsOffset;
+    public Difficulty difficulty;
 
     void Start()
     {
+        GetDifficulty();
         GenerateBaseRegion();
         DuplicateRegion();
         TileIsOffset();
+    }
+
+    int GetDifficulty()
+    { 
+        switch (difficulty)
+        {
+            case Difficulty.Easy: gridSize = 4; break;
+            case Difficulty.Medium: gridSize = 6; break;
+            case Difficulty.Hard: gridSize = 9; break;
+            default: gridSize = 6; break;
+        }      
+        Debug.Log(difficulty);
+        return gridSize;
     }
 
     void GenerateBaseRegion()
@@ -144,7 +159,6 @@ public class GenerateGrid : MonoBehaviour
             SetTileMaterials(child, tileIsOffset);
         }
     }
-
     public void SetTileMaterials(GameObject currentTile, bool isOffset/*, bool isOddRegion*/)
     {
         currentTile.GetComponent<MeshRenderer>().material = isOffset ? tileMaterialOffset : tileMaterial;

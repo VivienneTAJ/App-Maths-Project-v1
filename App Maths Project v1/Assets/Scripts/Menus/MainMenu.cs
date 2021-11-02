@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         settingsMenu.GetCurrentSettings();
+        FindObjectOfType<AudioManager>().Play("BGM_Main");
     }
     void Update()
     {
