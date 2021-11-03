@@ -18,7 +18,7 @@ public class GenerateGrid : MonoBehaviour
     public bool colIsOffset, tileIsOffset;
     public Difficulty difficulty;
 
-    void Start()
+    void Awake()
     {
         GetDifficulty();
         GenerateBaseRegion();

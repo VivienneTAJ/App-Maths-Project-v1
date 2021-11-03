@@ -7,10 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     public SettingsMenu settingsMenu;
     public GameObject mainMenuUI, optionsMenuUI;
+    public bool initialMain;
     private void Start()
     {
         settingsMenu.GetCurrentSettings();
         FindObjectOfType<AudioManager>().Play("BGM_Main");
+        initialMain = false;
     }
     void Update()
     {
@@ -24,11 +26,6 @@ public class MainMenu : MonoBehaviour
             mainMenuUI.SetActive(true);
         }
     }
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
     public void QuitGame()
     {
         Debug.Log("Quitting game!");
