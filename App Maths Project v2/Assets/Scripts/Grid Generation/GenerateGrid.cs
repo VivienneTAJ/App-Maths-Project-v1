@@ -30,10 +30,22 @@ public class GenerateGrid : MonoBehaviour
     { 
         switch (difficulty)
         {
-            case Difficulty.Easy: gridSize = 4; break;
-            case Difficulty.Medium: gridSize = 6; break;
-            case Difficulty.Hard: gridSize = 9; break;
-            default: gridSize = 6; break;
+            case Difficulty.Easy: 
+                gridSize = 4;
+                FindObjectOfType<AudioManager>().Play("BGM_Level_Easy");
+                break;
+            case Difficulty.Medium: 
+                gridSize = 6;
+                FindObjectOfType<AudioManager>().Play("BGM_Level_Medium");
+                break;
+            case Difficulty.Hard: 
+                gridSize = 9;
+                FindObjectOfType<AudioManager>().Play("BGM_Level_Hard");
+                break;
+            default: 
+                gridSize = 6;
+                FindObjectOfType<AudioManager>().Play("BGM_Level_Medium");
+                break;
         }      
         Debug.Log(difficulty);
         return gridSize;
