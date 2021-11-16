@@ -11,7 +11,7 @@ public class SettingsMenu : MonoBehaviour
 
     public GameObject fullScreenToggle;
     public TMP_Dropdown resolutionDropdown, graphicsDropDown;
-    public Slider volumeSlider;
+    public Slider BGMVolumeSlider, SFXVolumeSlider;
     public AudioMixer audioMixer;
     private void Start()
     {
@@ -35,7 +35,8 @@ public class SettingsMenu : MonoBehaviour
     }
     public void GetCurrentSettings()
     {
-        SetVolume(PlayerPrefs.GetFloat("MasterVolume"));
+        SetBGMVolume(PlayerPrefs.GetFloat("BGMVolume"));
+        SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume"));
         SetQuality(PlayerPrefs.GetInt("QualityIndex"));
         if (PlayerPrefs.GetInt("IsFullScreen") == 0)
         {
@@ -59,12 +60,23 @@ public class SettingsMenu : MonoBehaviour
         }
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
         graphicsDropDown.value = PlayerPrefs.GetInt("QualityIndex");
-        volumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     }
-    public void SetVolume(float volume)
+    //public void SetMasterVolume(float volume)
+    //{
+    //    PlayerPrefs.SetFloat("MasterVolume", volume);
+    //    audioMixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
+    //}
+    public void SetBGMVolume(float volume)
     {
-        PlayerPrefs.SetFloat("volume", volume);
-        audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("volume"));
+        PlayerPrefs.SetFloat("BGMVolume", volume);
+        audioMixer.SetFloat("BGMVolume", PlayerPrefs.GetFloat("BGMVolume"));
+    }
+    public void SetSFXVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+        audioMixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
     }
     public void SetQuality(int qualityIndex)
     {

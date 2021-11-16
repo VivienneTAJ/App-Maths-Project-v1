@@ -6,6 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
+    public AudioMixerGroup BGM;
+    public AudioMixerGroup SFX;
+
     private void Awake()
     {
         if (instance == null)
@@ -25,6 +28,11 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = BGM;
+            if (s.clip.name[0] == 'S')
+            {
+                s.source.outputAudioMixerGroup = SFX;
+            }            
         }
     }
     public void Play(string name)

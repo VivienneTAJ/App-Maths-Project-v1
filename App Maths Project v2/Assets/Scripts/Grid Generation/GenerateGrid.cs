@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEngine.UI;
 
 public class GenerateGrid : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GenerateGrid : MonoBehaviour
 
     void Awake()
     {
+        //gridSize = 9;
         GetDifficulty();
         GenerateBaseRegion();
         DuplicateRegion();
