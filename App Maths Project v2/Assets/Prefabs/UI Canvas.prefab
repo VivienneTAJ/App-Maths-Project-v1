@@ -6263,7 +6263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 0.000013777809}
+  m_AnchoredPosition: {x: -0.0010261536, y: 0.000013777809}
   m_SizeDelta: {x: 579.6872, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &129251231503503505
@@ -6280,6 +6280,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfTiles: {fileID: 129251230199909104}
   slot: {fileID: 129251231625642624}
+  item: {fileID: 129251231673703818}
+  itemImages:
+  - {fileID: -4211259917669671267, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: -528094902876603099, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: 1967792465213924281, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: -1763745177859648626, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: -4346193175782286264, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: -5920219604515588392, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: -8426209166519285730, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: 1318180523721814159, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
+  - {fileID: 1314005837506238028, guid: 11a873526eefe4e4ba941904ce3608f1, type: 3}
 --- !u!114 &129251231503503511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6578,7 +6589,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 300}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &129251231625642629
 CanvasRenderer:
@@ -6631,7 +6642,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfTiles: {fileID: 129251230199909104}
-  item: {fileID: 129251231673703818}
 --- !u!1 &129251231629762080
 GameObject:
   m_ObjectHideFlags: 0
@@ -6744,7 +6754,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &129251231673703820
 CanvasRenderer:
@@ -6774,7 +6784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1314005837506238028, guid: 5ee623bcb1d812f43ad2b6629a8edbe1,
+  m_Sprite: {fileID: -4217592887472625829, guid: 348122e359d6d6441af0e2e5dc7a7f1e,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
