@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b80be6284a6bd246b8568146d784c4a
+guid: 089512941c5332d4f85f345cc90c2f03
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,22 +104,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cloud
+      name: Title
       rect:
         serializedVersion: 2
-        x: 60
-        y: 166
-        width: 610
-        height: 396
+        x: 53
+        y: 263
+        width: 524
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3871e5108d462e347b16dbf974d705f1
-      internalID: 2007518899
+      spriteID: c90d63a6f5130f24a86b6be0ef618474
+      internalID: -688728825
       vertices: []
       indices: 
       edges: []
@@ -127,7 +127,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e80d34d2f80f3ff4fbd8d9f3a5fe7861
+    spriteID: 3225e0cda57b8164b83486c0f0fabbd4
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cloud: 2007518899
+      Title: -688728825
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

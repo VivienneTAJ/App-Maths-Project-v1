@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void LoadMainMenu()
     {
-        sceneTransition.FadeOut(SceneManager.GetActiveScene().buildIndex - 1);
         Time.timeScale = 1;
+        sceneTransition.FadeOut(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
