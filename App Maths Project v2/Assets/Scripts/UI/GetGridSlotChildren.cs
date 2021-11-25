@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GetGridSlotChildren : MonoBehaviour
+public class GetGridSlotChildren : MonoBehaviour //Script by: B00381904
 {
     public NumberOfTiles numberOfTiles; //Number of tiles in grid
     public GameObject[] slots; //Transform array to hold the child items of each slot

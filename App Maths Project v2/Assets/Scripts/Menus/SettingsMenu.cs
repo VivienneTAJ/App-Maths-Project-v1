@@ -5,7 +5,8 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
 
-public class SettingsMenu : MonoBehaviour
+public class SettingsMenu : MonoBehaviour //Original script by: B00394780
+                                          //Refined script by: B00381904
 {
     Resolution[] resolutions;
 

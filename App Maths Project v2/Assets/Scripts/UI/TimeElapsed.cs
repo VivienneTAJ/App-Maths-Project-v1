@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TimeElapsed : MonoBehaviour
+public class TimeElapsed : MonoBehaviour //Script by: B00381904
 {
     public float timeElapsed = 0f;
     public TextMeshProUGUI timeText;

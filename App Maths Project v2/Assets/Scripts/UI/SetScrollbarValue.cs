@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SetScrollbarValue : MonoBehaviour
+public class SetScrollbarValue : MonoBehaviour //Script by: B00381904
 {
     public Scrollbar sb;
     public IEnumerator Start()

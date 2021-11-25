@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NumberOfTiles : MonoBehaviour
+public class NumberOfTiles : MonoBehaviour //Script by: B00381904
 {    
     public GenerateGrid generateGrid;
     public TextMeshProUGUI numberText;

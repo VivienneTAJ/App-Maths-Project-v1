@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpdateTile : MonoBehaviour
+public class UpdateTile : MonoBehaviour //Script by: B00394780
 {
     public int[,] spawnGrid;
     // Start is called before the first frame update

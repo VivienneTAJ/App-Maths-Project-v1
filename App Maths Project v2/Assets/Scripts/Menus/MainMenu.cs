@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour //Original script by: B00394780
+                                      //Refined script by: B00381904
 {
     public SettingsMenu settingsMenu;
     public GameObject mainMenuUI, optionsMenuUI;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour //Script by: B00381904
 {
     public static bool gameIsPaused;
     public GameObject pauseMenuUI, optionsMenuUI;
@@ -13,7 +13,6 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuUI.activeInHierarchy)

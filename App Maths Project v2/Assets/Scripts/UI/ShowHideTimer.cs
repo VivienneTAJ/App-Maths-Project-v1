@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ShowHideTimer : MonoBehaviour, IPointerDownHandler
+public class ShowHideTimer : MonoBehaviour, IPointerDownHandler //Script by: B00381904
 {
     public GameObject timer, timerButton;
     public TextMeshProUGUI timeText;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DifficultySelectMenu : MonoBehaviour
+public class DifficultySelectMenu : MonoBehaviour //Script by: B00381904
 {
     public GenerateGrid generateGrid;
     public SceneTransition sceneTransition;

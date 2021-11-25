@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateGridSlots : MonoBehaviour
+public class GenerateGridSlots : MonoBehaviour //Script by: B00381904
 {
     public NumberOfTiles numberOfTiles; //Number of tiles in grid
     public GameObject slot; //Gameobject to hold the current slot
